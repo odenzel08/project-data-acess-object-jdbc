@@ -10,6 +10,15 @@ import java.sql.Statement;
 import java.util.Properties;
 
 public class DB {
+	
+	static {
+        try {
+            // Carrega o driver JDBC
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new DbException("Driver JDBC não encontrado: " + e.getMessage());
+        }
+    }
 
 	private static Connection conn = null;
 	
